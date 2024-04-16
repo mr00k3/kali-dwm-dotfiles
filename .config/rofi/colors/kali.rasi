@@ -1,0 +1,22 @@
+/*
+ * Author:      Arszilla
+ * Github:      https://github.com/Arszilla
+ * Gitlab:      https://gitlab.com/Arszilla
+ * Twitter:     https://twitter.com/Arszilla
+ * 
+ * License:     MIT License
+ * License URL: https://gitlab.com/Arszilla/i3-dotfiles/-/blob/main/LICENSE
+ *
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
+
+* {
+    background:     #060B15;
+    background-alt: #060B15FF;
+    foreground:     #E6E6E6;
+    
+    blue:           #277FFF;
+    teal:           #47D4B9;
+    red:            #EC0101;
+}

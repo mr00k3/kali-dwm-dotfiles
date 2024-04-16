@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+#
+# Original Author:      Aditya Shakya (adi1090x)
+# Github:               https://github.com/adi1090x/
+# Github Repository:    https://github.com/adi1090x/rofi
+#
+# Modified by:          Arszilla
+# Github:               https://github.com/Arszilla
+# Gitlab:               https://gitlab.com/Arszilla
+# Twitter:              https://twitter.com/Arszilla
+#
+# License:              GNU General Public License v3.0
+# License URL:          https://github.com/adi1090x/rofi/blob/master/LICENSE
+#
+# Power Menu
+# Rofi Version: 1.7.3
+
+# Variables:
+host=$(/usr/bin/hostname)
+
+# Options:
+lock=' Lock'
+suspend=' Suspend'
+logout='󰗼 Logout'
+reboot='↻ Reboot'
+shutdown='󰐥 Shutdown'
+
+# Run rofi on all connected monitors:
+# rofi_cmd() {
+#     /usr/bin/rofi -dmenu \
+#         -i \
+#         -p "$host |" \
+#         -theme ~/.config/rofi/colors/powermenu.rasi \
+#         -monitor -1
+
+# Rofi function:
+rofi_cmd() {
+    /usr/bin/rofi -dmenu \
+        -i \
+        -p "$host |" \
+        -theme ~/.config/rofi/colors/powermenu.rasi
+}
+
+# Pass the variables to rofi's dmenu:
+run_rofi() {
+    echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+}
+
+# Ask the user for a selection:
+chosen="$(run_rofi)"
+case ${chosen} in
+    "$lock")
+        /usr/bin/betterlockscreen -l --off 86400
+        ;;
+
+    "$suspend")
+        /usr/bin/betterlockscreen -l & /usr/bin/sleep 0.5; /usr/bin/systemctl suspend
+        ;;
+
+    "$logout")
+        /usr/bin/i3-msg exit
+        ;;
+
+    # "$hibernate")
+    #     /usr/bin/betterlockscreen -l & /usr/bin/sleep 0.5; /usr/bin/systemctl hibernate
+    #     ;;
+
+    "$reboot")
+        /usr/bin/systemctl reboot
+        ;;
+
+    "$shutdown")
+        /usr/bin/systemctl poweroff
+        ;;
+
+esac

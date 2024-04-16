@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="thunar" version="1.0">
+  <property name="last-location-bar" type="empty"/>
+  <property name="last-view" type="string" value="ThunarDetailsView"/>
+  <property name="misc-single-click" type="bool" value="false"/>
+  <property name="last-icon-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_100_PERCENT"/>
+  <property name="last-window-width" type="int" value="1902"/>
+  <property name="last-window-height" type="int" value="912"/>
+  <property name="last-window-maximized" type="bool" value="false"/>
+  <property name="misc-recursive-permissions" type="string" value="THUNAR_RECURSIVE_PERMISSIONS_ASK"/>
+  <property name="last-show-hidden" type="bool" value="true"/>
+  <property name="last-side-pane" type="string" value="ThunarShortcutsPane"/>
+  <property name="tree-icon-size" type="string" value="THUNAR_ICON_SIZE_24"/>
+  <property name="shortcuts-icon-emblems" type="bool" value="true"/>
+  <property name="last-statusbar-visible" type="bool" value="true"/>
+  <property name="last-menubar-visible" type="bool" value="true"/>
+  <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,176,126,86,94,50,50,1235,50,50,80,50,240"/>
+  <property name="last-separator-position" type="int" value="170"/>
+  <property name="shortcuts-icon-size" type="string" value="THUNAR_ICON_SIZE_24"/>
+  <property name="last-details-view-visible-columns" type="string" value="THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE"/>
+  <property name="tree-icon-emblems" type="bool" value="true"/>
+  <property name="default-view" type="string" value="ThunarDetailsView"/>
+  <property name="misc-date-style" type="string" value="THUNAR_DATE_STYLE_SHORT"/>
+  <property name="misc-text-beside-icons" type="bool" value="false"/>
+  <property name="last-details-view-fixed-columns" type="bool" value="false"/>
+  <property name="misc-folder-item-count" type="string" value="THUNAR_FOLDER_ITEM_COUNT_NEVER"/>
+</channel>

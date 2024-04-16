@@ -1,0 +1,225 @@
+# Author:       Arszilla
+# Github:       https://github.com/Arszilla
+# Gitlab:       https://gitlab.com/Arszilla
+# Twitter:      https://twitter.com/Arszilla
+#
+# License:      MIT License
+# License URL:  https://gitlab.com/Arszilla/i3-dotfiles/-/blob/main/LICENSE
+#
+# dunst config
+# dunst Version: 1.9.0
+
+[global]
+    ########## DISPLAY ##########
+    # Monitor that the notications will be displayed on:
+    monitor = 0
+
+    # Display notification on focused monitor.  Possible modes are:
+    #   mouse: follow mouse pointer
+    #   keyboard: follow window with keyboard focus
+    #   none: don't follow anything
+    #
+    # "keyboard" needs a window manager that exports the
+    # _NET_ACTIVE_WINDOW property.
+    # This should be the case for almost all modern window managers.
+    #
+    # If this option is set to mouse or keyboard, the monitor option
+    # will be ignored.
+    follow = none
+
+    ########## GEOMETRY ##########
+    # Dynamic width from 0 to 400:
+    width = (0, 400)
+
+    # The maximum height of a single notification, excluding the frame:
+    height = 128
+
+    # Position the notification:
+    origin = top-right
+
+    # Offset from the origin:
+    offset = 15x35
+
+    # Scale factor. It is auto-detected if value is 0:
+    scale = 0
+
+    # Maximum number of notification (0 means no limit):
+    notification_limit = 3
+
+    ########## PROGRESS BAR ##########
+    # Enable progess bar:
+    progress_bar = true
+
+    # Set the progress bar height. This includes the frame:
+    progress_bar_height = 5
+
+    # Set the frame width of the progress bar:
+    progress_bar_frame_width = 0
+
+    # Set the minimum width for the progress bar:
+    progress_bar_min_width = 150
+
+    # Set the maximum width for the progress bar:
+    progress_bar_max_width = 275
+
+    # Show how many messages are currently hidden:
+    indicate_hidden = yes
+
+    # The transparency of the notification window:
+    transparency = 0
+
+    # Draw a line of "separator_height" pixel height between two notifications:
+    # If gap_size is greater than 0, this setting will be ignored.
+    separator_height = 1
+
+    # Padding between text and separator:
+    padding = 10
+
+    # Horizontal padding:
+    horizontal_padding = 10
+
+    # Padding between text and icon:
+    text_icon_padding = 0
+
+    # Set the width in pixels of the frame around the notification window:
+    frame_width = 0
+
+    # Set the color of the frame around the notification window:
+    frame_color = "#060B15"
+
+    # Size of gap to display between notifications:
+    gap_size = 0
+
+    # Define a color for the separator.
+    # possible values are:
+    #  * auto: dunst tries to find a color fitting to the background;
+    #  * foreground: use the same color as the foreground;
+    #  * frame: use the same color as the frame;
+    #  * anything else will be interpreted as a X color.
+    separator_color = frame
+
+    # Sort messages by urgency:
+    sort = yes
+
+    ########## TEXT ##########
+    # Font:
+    font = JetBrainsMono Nerd Font 10
+
+    # The spacing between lines:
+    line_height = 0
+
+    markup = full
+
+    # The format of the message.  Possible variables are:
+    #   %a  appname
+    #   %s  summary
+    #   %b  body
+    #   %i  iconname (including its path)
+    #   %I  iconname (without its path)
+    #   %p  progress value if set ([  0%] to [100%]) or nothing
+    #   %n  progress value if set without any extra characters
+    #   %%  Literal %
+    # Markup is allowed
+    format = "<b>%a</b>\n%s\n%b"
+
+    alignment = left
+
+    # Vertical alignment of message text and icon:
+    vertical_alignment = center
+
+    # Show the age of message if the message is older than show_age_threshold:
+    show_age_threshold = 60
+
+    # Specify where to make an ellipsis in long lines.
+    # Possible values are "start", "middle" and "end".
+    ellipsize = middle
+
+    # Ignore newlines '\n' in notifications:
+    ignore_newline = false
+
+    # Stack notifications with the same content:
+    stack_duplicates = true
+
+    # Hide the number of stacked notifications with the same content:
+    hide_duplicate_count = false
+
+    # Display indicators for URLs (U) and actions (A):
+    show_indicators = yes
+
+    ########## ICONS ##########
+    # Icon alignment:
+    icon_position = left
+
+    # Scale small icons up to this size, set to 0 to disable:
+    min_icon_size = 28
+
+    # Scale larger icons down to this size, set to 0 to disable:
+    max_icon_size = 28
+
+    # Paths to default icons:
+    icon_path = /usr/share/icons/Flat-Remix-Blue-Dark/actions/:/usr/share/icons/Flat-Remix-Blue-Dark/status/scalable/:/usr/share/icons/Flat-Remix-Blue-Dark/devices/scalable:/usr/share/icons/Flat-Remix-Blue-Dark/apps/scalable:/usr/share/icons/Flat-Remix-Blue-Dark/devices/scalable:/usr/share/icons/Flat-Remix-Blue-Dark/panel
+
+    ########## HISTORY ##########
+    # Should a notification popped up from history be sticky or timeout
+    # as if it would normally do.
+    sticky_history = false
+
+    # Maximum amount of notifications kept in history
+    history_length = 20
+
+    ########## MISC/ADVANCED ##########
+    # dmenu path
+    dmenu = /usr/bin/rofi -dmenu
+
+    # Browser for opening urls in context menu
+    browser = /usr/bin/firefox --new-tab
+
+    # Always run rule-defined scripts, even if the notification is suppressed
+    always_run_script = true
+
+    # Define the title of the windows spawned by dunst:
+    title = Dunst
+
+    # Define the class of the windows spawned by dunst:
+    class = Dunst
+
+    # Define the corner radius of the notification window in pixel size:
+    corner_radius = 0
+
+    # Close notification:
+    close = mod4+m
+
+    # Close all notifications:
+    close_all = mod4+shift+m
+
+    # Re-display last message(s):
+    history = mod4+shift+n
+
+    ########## EXPERIMENTAL FEATURES ##########
+    [experimental]
+    # Calculate the dpi to use on a per-monitor basis:
+    per_monitor_dpi = false
+
+    [urgency_low]
+    background = "#21232C"
+    foreground = "#E6E6E6"
+    highlight = "#E6E6E6"
+    timeout = 10
+
+    [urgency_normal]
+    background = "#21232C"
+    foreground = "#E6E6E6"
+    highlight = "#E6E6E6"
+    timeout = 10
+
+    [urgency_critical]
+    background = "#21232C"
+    foreground = "#E6E6E6"
+    highlight = "#E6E6E6"
+    timeout = 0
+
+    [maim]
+    appname = "maim"
+    background = "#21232C"
+    foreground = "#E6E6E6"
+    timeout = 10

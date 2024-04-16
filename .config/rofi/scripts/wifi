@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+#
+# Original Author:      Eric Murphy
+# Github:               https://github.com/ericmurphyxyz
+# Github Repository:    https://github.com/ericmurphyxyz/rofi-wifi-menu
+#
+# Modified by:          Arszilla
+# Github:               https://github.com/Arszilla
+# Gitlab:               https://gitlab.com/Arszilla
+# Twitter:              https://twitter.com/Arszilla
+#
+# Wi-Fi Menu
+# Rofi Version: 1.7.3
+
+/usr/bin/dunstify -a NetworkManager -u normal "Getting a list of available Wi-Fi networks..."
+
+# Get a list of available wifi connections and morph it into a nice-looking list
+wifi_list=$(/usr/bin/nmcli --fields "SECURITY,SSID" device wifi list | /usr/bin/sed 1d | /usr/bin/sed 's/  */ /g' | /usr/bin/sed -E "s/WPA*.?\S/ /g" | /usr/bin/sed "s/^--/ /g" | /usr/bin/sed "s/  //g" | /usr/bin/sed "/--/d")
+
+status=$(/usr/bin/nmcli -fields wifi g)
+if [[ "$status" =~ 'enabled' ]]; then
+    toggle='󰤭  Disable Wi-Fi'
+
+elif [[ "$status" =~ 'disabled' ]]; then
+    toggle='󰤨  Enable Wi-Fi'
+
+fi
+
+# Use 'rofi' to select wifi network
+chosen_network=$(echo -e "$toggle\n$wifi_list" | /usr/bin/uniq -u | /usr/bin/rofi -dmenu -i -selected-row 1 -p "Wi-Fi SSID:" -theme ~/.config/rofi/colors/wifi-ssid.rasi)
+
+# Get name of the chosen connection
+chosen_id=$(echo "${chosen_network:3}" | /usr/bin/xargs)
+
+if [ "$chosen_network" = "" ]; then
+    exit
+
+elif [ "$chosen_network" = "󰤭  Disable Wi-Fi" ]; then
+    /usr/bin/nmcli radio wifi off
+    /usr/bin/dunstify -a NetworkManager -u normal "Wi-Fi disabled."
+
+elif [ "$chosen_network" = "󰤨  Enable Wi-Fi" ]; then
+    /usr/bin/nmcli radio wifi on
+    /usr/bin/dunstify -a NetworkManager -u normal "Wi-Fi enabled."
+
+else
+    # Message to show when connection is activated successfully
+    success_message="You are now connected to the Wi-Fi network '$chosen_id'."
+
+    # Get saved connections
+    saved_connections=$(/usr/bin/nmcli -g name connection)
+
+    if [[ $(echo "$saved_connections" | /musr/bin/grep -w "$chosen_id") = "$chosen_id" ]]; then
+        /usr/bin/nmcli connection up id "$chosen_id" | /usr/bin/grep "successfully" && /usr/bin/dunstify -a "Connection Established" -u normal "$success_message"
+
+    else
+        if [[ "$chosen_network" =~ "" ]]; then
+            wifi_password=$(/usr/bin/rofi -dmenu -p "Password: " -theme ~/.config/rofi/colors/wifi-password.rasi)
+
+        fi
+
+        /usr/bin/nmcli device wifi connect "$chosen_id" password "$wifi_password" | /usr/bin/grep "successfully" && /usr/bin/dunstify -a "Connection Established" -u normal "$success_message"
+
+    fi
+fi
